@@ -327,38 +327,6 @@ public class Answers {
              
             }
 		
-//		static int countingValleys(int n, String s) {
-//			int currLvl=0;
-//			int vCount=0;
-//			boolean inValley=false;
-//			for(int i=0;i<s.length();i++) {
-//				if(currLvl<0&&s.charAt(i)=='D') {
-//					inValley=true;
-//				}
-//				if(currLvl>=0) {
-//					inValley=false;
-//				}
-//				if(inValley&&currLvl+1>-1&&s.charAt(i)=='U') {
-//					vCount++;
-//				}
-//				if(currLvl<0&&s.charAt(i)=='D') {
-//					inValley=true;
-//				}
-//				
-//				if(currLvl>=0) {
-//					inValley=false;
-//				}
-//				if(s.charAt(i)=='D') {
-//					currLvl--;
-//				}
-//				if(s.charAt(i)=='U') {
-//					currLvl++;
-//				}
-//			}
-//			
-//			return vCount;
-//			}
-		
 		static int countingValleys(int n, String s) {//only passed 18/22 tests
 			int currLvl=0;
 			int vCount=0;
@@ -452,6 +420,65 @@ public class Answers {
 			 }
 			 return o2;
 
+		    }
+		 
+		 static int[] gradingStudents(int[] grades) {
+			 int[] res = new int[grades.length];
+			 for(int i=0;i<grades.length;i++) {
+				 if(grades[i]<38) {
+					 res[i] = grades[i];
+				 }else if(grades[i]%10==3||grades[i]%10==8){
+					 res[i]=grades[i]+2;
+				 }else if(grades[i]%10==4||grades[i]%10==9){
+					 res[i]=grades[i]+1;
+				 }else {
+					 res[i]=grades[i];
+				 }
+			 }
+			 
+			 return res;
+		 }
+		 
+		 static int hurdleRace(int k, int[] height) {
+			 	int max =0;
+			 	int doses;
+			 	for(int i=0;i<height.length;i++) {
+			 		if(height[i]>max) {
+			 			max=height[i];
+			 		}
+			 	}
+			 	doses=max-k;
+			 	if(doses<0) {
+			 		doses=0;
+			 	}
+			 	return doses;
+		    }
+		 
+		 static int utopianTree(int n) {
+			 int height = 1;
+			 for(int i=2;i<n+2;i++) {
+				 if(i%2==0) {
+					 height*=2;
+				 }else {
+					 height+=1;
+				 }
+			 }
+			 return height;
+		    }
+		 
+		 static int designerPdfViewer(int[] h, String word) {
+			 int max=0;
+			 int count = word.length();
+			 int area = 0;
+			 int currHeight = 0;
+			 for(int i=0;i<word.length();i++) {
+				 currHeight = h[word.charAt(i)-97];
+				 if(currHeight>max) {
+					 max=currHeight;
+				 }
+			 }
+			 area = max*count;
+			 return area;
 		    }
 }
 
