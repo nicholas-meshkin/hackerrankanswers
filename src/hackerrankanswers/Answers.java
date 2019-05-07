@@ -1,5 +1,6 @@
 package hackerrankanswers;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -479,6 +480,171 @@ public class Answers {
 			 }
 			 area = max*count;
 			 return area;
+		    }
+		 
+		 static String angryProfessor(int k, int[] a) {
+			 String y = "YES";
+			 String n = "NO";
+			 int count = 0;
+			 for(int i=0;i<a.length;i++) {
+				 if(a[i]<=0) {
+					 count++;
+				 }
+			 }
+			 if(count>=k) {
+				 return n;
+			 }else {
+				 return y;
+			 }
+
+		    }
+		 
+		 public static int pickingNumbers(List<Integer> a) {
+			 	Collections.sort(a);
+			 	int currCount=1;
+			 	int arrCount=0;
+			 	for(int i=0;i<a.size();i++) {
+			 		int currInt = a.get(i);
+			 		for(int j=0;j<a.size();j++) {
+			 			if(j!=i) {
+			 				if(a.get(j)==currInt||a.get(j)==currInt+1) {
+			 					currCount++;
+			 				}
+			 			}
+			 		}
+			 		if(currCount>arrCount) {
+		 				arrCount=currCount;
+		 			}
+			 		currCount=1;
+			 	}
+			 	return arrCount;
+			    }
+		 
+		 static int beautifulDays(int i, int j, int k) {
+			 int count = 0;
+			 for(int x = i;x<j+1;x++) {
+				 String preFlip = Integer.toString(x);
+				 String flip = "";
+				 int intFlip = 0;
+				 for(int y=preFlip.length()-1;y>-1;y--) {
+					 flip+=preFlip.charAt(y);
+				 }
+				 intFlip = Integer.parseInt(flip);
+				 if((x-intFlip)%k==0) {
+					 count++;
+				 }
+			 }
+			 return count;
+		    }
+		 
+		 static int viralAdvertising(int n) {
+			 int likeCount=0;
+			 int currLikes=0;
+			 int shareCount=5;
+
+			 for(int i=1;i<n+1;i++) {
+				currLikes=shareCount/2;
+				 shareCount = currLikes*3;
+				 likeCount+=currLikes;
+			 }
+			 
+			 return likeCount;
+		    }
+		 
+		 static int[] permutationEquation(int[] p) {
+			 	int[] res = new int[p.length];
+			 	List<Integer> x = new ArrayList<>();
+			 	for(int i=0;i<p.length;i++) {
+			 		x.add(p[i]);
+			 	}
+			 	for(int i=1;i<p.length+1;i++) {
+			 		int currInt = x.indexOf(i)+1;
+			 		int nextInt = x.indexOf(currInt)+1;
+			 		res[i-1]=nextInt;
+			 	}
+			 	
+			 	return res;
+		    }
+		 
+		 static int findDigits(int n) {
+			 String x = Integer.toString(n);
+			 int count = 0;
+			 for(int i=0;i<x.length();i++) {
+				 String z = "";
+				 z+=x.charAt(i);
+				 int y = Integer.parseInt(z);
+				 if(y!=0) {
+					 if(n%y==0) {
+						 count++;
+					 }
+				 }
+			 }
+			 return count;
+		    }
+		 
+		 static int saveThePrisoner(int n, int m, int s) {
+			 int lastSeat=0;
+			 int minusStart = m-1;
+			 int remainder = minusStart%n;
+			 int seatsLeft=n-s;
+			 if(remainder<=seatsLeft) {
+				 lastSeat=s+remainder;
+			 }else {
+				 lastSeat=remainder-seatsLeft;
+			 }
+			 return lastSeat;
+		    }
+		 
+		 static int[] cutTheSticks(int[] arr) {
+			 List<Integer> n = new ArrayList<>();
+			 for(int i=0;i<arr.length;i++) {
+				 n.add(arr[i]);
+			 }
+			 List<Integer> counts = new ArrayList<>();
+			 Collections.sort(n);
+			 while(n.get(n.size()-1)!=0) {
+				 
+				 for(int i=0;i<n.size();i++) {
+					 int currCount=0;
+					 int currInt=0;
+					 if(n.get(i)==0) {
+						 n.remove(i);
+						 break;
+					 }else {
+						 currInt=n.get(i);
+					 }
+					 for(int j=0;j<n.size();j++) {
+						if(n.get(j)!=0) {
+							n.set(j, n.get(j)-currInt);
+							currCount++;
+						}
+					 }
+					 counts.add(currCount);
+				 }
+			 }
+			 int[] res = new int[counts.size()];
+			 for(int i=0;i<counts.size();i++) {
+				 res[i]=counts.get(i);
+			 }
+			 return res;
+		    }
+		 
+		 static int jumpingOnClouds(int[] c) {
+			 	int jumps = 0;
+			 	for(int i=0;i<c.length;i++) {
+			 		if(i<c.length-2) {
+			 			if(c[i+2]==0) {
+			 				jumps++;
+			 				i+=1;
+			 			}else {
+			 				jumps++;
+			 			}
+			 		}else if(i==c.length-2){
+			 			jumps++;
+			 		}
+			 	}
+			 	
+			 	return jumps;
 		    }
 }
 
